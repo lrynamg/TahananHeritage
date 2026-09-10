@@ -27,9 +27,6 @@
                          <li class="nav-item">
                             <a class="nav-link" href="/getinvolved">Get Involved</a>
                         </li>
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" href="/Main/Dashboard">Admin</a>
-                        </li> --}}
                     </ul>
                 </div>
             </div>
