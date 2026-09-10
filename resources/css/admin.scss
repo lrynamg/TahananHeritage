@@ -1,0 +1,221 @@
+@import "bootstrap/scss/bootstrap";
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+/* 1. Theme Colors based on your screenshots */
+:root {
+    --heritage-orange: #c05a18; /* Matches your buttons/footer */
+    --heritage-dark: #8a3f0f; /* Darker shade for hover/active */
+    --heritage-cream: #f9f7f2; /* Background color */
+}
+
+/* 2. Layout Container */
+.admin-wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+    min-height: 100vh; /* Full screen height */
+}
+
+/* 3. The Sidebar */
+.sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background-color: var(--heritage-orange); /* THEME COLOR */
+    color: white;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column; /* Stack top to bottom */
+    height: 100%;
+}
+
+.sidebar .sidebar-header {
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.1); /* Slight shadow for logo area */
+    text-align: center;
+}
+
+.sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    list-style: none; /* Removes bullet points */
+    margin: 0;
+}
+
+/* 4. The Links/Buttons */
+.sidebar ul li a {
+    padding: 15px 25px;
+    font-size: 1.1em;
+    display: block;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.sidebar ul li a:hover {
+    background-color: var(--heritage-dark); /* Darker orange on hover */
+}
+
+/* 5. The "Active" Tab State */
+.sidebar ul li.active > a {
+    background-color: white;
+    color: var(--heritage-orange); /* Invert colors for active tab */
+    font-weight: bold;
+}
+
+/* 6. The "Back to Home" Link (Pushed to bottom) */
+.sidebar-footer {
+    margin-top: auto; /* Pushes to bottom */
+    padding: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-footer a {
+    color: #ffebd6; /* Light cream text */
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+.sidebar-footer a:hover {
+    color: white;
+}
+
+/*FORDA TABLES*/
+/* --- THEME VARIABLES --- */
+:root {
+    --h-orange: #c05a18; /* Your Burnt Orange */
+    --h-dark: #4a3b32; /* Dark Wood/Brown */
+    --h-cream: #f9f7f2; /* Your Background Cream */
+    --h-light-orange: #fff3e0; /* Hover Color */
+}
+
+/* 1. Main Container & Card */
+.heritage-container {
+    background-color: var(--h-cream);
+    /*    min-height: 100vh;*/
+}
+
+.heritage-card {
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Soft shadow */
+    border-radius: 12px; /* Smooth corners */
+    padding: 25px;
+    background: white;
+}
+
+.heritage-title {
+    font-family: "Instrument Serif", serif; /* Your Font */
+    color: var(--h-dark);
+    font-weight: bold;
+}
+
+/* 2. The Search Bar */
+.search-box {
+    position: relative;
+    max-width: 250px;
+}
+
+.search-box input {
+    border-radius: 20px; /* Pill shape */
+    padding-right: 35px;
+    border: 1px solid #ddd;
+}
+
+.search-box input:focus {
+    border-color: var(--h-orange);
+    box-shadow: 0 0 0 0.2rem rgba(192, 90, 24, 0.25);
+}
+
+.search-box i {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+}
+
+/* 3. The Table Header */
+.heritage-table thead th {
+    background-color: var(--h-dark); /* Dark Header */
+    color: white;
+    border: none;
+    padding: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* Rounded corners for the header row */
+.heritage-table thead th:first-child {
+    border-top-left-radius: 8px;
+}
+
+.heritage-table thead th:last-child {
+    border-top-right-radius: 8px;
+}
+
+/* 4. Table Rows */
+.heritage-table tbody tr {
+    transition: background 0.2s;
+}
+
+.heritage-table tbody td {
+    padding: 15px;
+    vertical-align: middle;
+    color: #555;
+    border-bottom: 1px solid #eee;
+}
+
+.heritage-table tbody tr:hover {
+    background-color: var(--h-light-orange); /* Peach hover effect */
+}
+
+/* 5. Action Buttons (Edit/Delete) */
+.btn-edit {
+    background-color: #e0e0e0;
+    color: #555;
+    margin-right: 5px;
+    transition: 0.3s;
+}
+
+.btn-edit:hover {
+    background-color: var(--h-orange);
+    color: white;
+}
+
+.btn-delete {
+    background-color: #ffebee;
+    color: #d32f2f;
+    transition: 0.3s;
+}
+
+.btn-delete:hover {
+    background-color: #d32f2f;
+    color: white;
+}
+
+/* 6. Pagination (The trickiest part to re-style) */
+.heritage-pagination .page-link {
+    color: var(--h-dark);
+    border: 1px solid #eee;
+    margin: 0 3px;
+    border-radius: 4px;
+}
+
+.heritage-pagination .page-link:hover {
+    background-color: #eee;
+    color: var(--h-orange);
+}
+
+.heritage-pagination .page-item.active .page-link {
+    background-color: var(--h-orange); /* Your Orange */
+    border-color: var(--h-orange);
+    color: white;
+}
+
+.heritage-pagination .page-item.disabled .page-link {
+    color: #ccc;
+}
