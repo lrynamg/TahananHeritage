@@ -1,0 +1,114 @@
+# QUICK REFERENCE CARD - Keep This Open During Recording
+
+## ?? TIMING CHECKLIST
+- [0:00-0:30] INTRO
+- [0:30-0:45] LOGIN & MIDDLEWARE (15 sec)
+- [0:45-1:15] DASHBOARD (30 sec)
+- [1:15-1:45] PAGINATION (30 sec)
+- [1:45-2:15] CREATE (30 sec)
+- [2:15-2:45] UPDATE & DELETE (30 sec)
+- [2:45-3:15] RESTORE (30 sec)
+- [3:15-3:45] PUBLIC REGISTRATION (30 sec)
+- [3:45-4:45] CODE WALKTHROUGH (60 sec)
+- [4:45-5:00] CONCLUSION (15 sec)
+
+## ?? KEY CODE FILES (Tab These in VS Code)
+
+1. `app/Http/Middleware/IsAdmin.php`
+   - Explain: auth check + role check
+
+2. `app/Http/Controllers/Admin/VolunteerController.php`
+   - Methods: index(), store(), destroy(), restore()
+
+3. `app/Http/Requests/StoreVolunteerRequest.php`
+   - Show validation rules
+
+4. `app/Models/Volunteer.php`
+   - Show SoftDeletes trait
+
+5. `routes/web.php`
+   - Show is.admin middleware
+
+6. `resources/views/admin/volunteers/index.blade.php`
+   - Show pagination links
+
+## ?? LIVE DEMO SEQUENCE
+
+1. Go to login page
+2. Try `/admin/volunteers` without login (403 error)
+3. Login: admin@example.com / password
+4. Show admin dashboard
+5. Click Volunteers
+6. Show table + pagination
+7. Click Add Volunteer
+8. Try blank email (show error)
+9. Fill form correctly
+10. Submit (show success)
+11. Click Edit on new volunteer
+12. Change phone number
+13. Submit (show success)
+14. Click Delete
+15. Show success message
+16. Click Deleted Volunteers
+17. Click Restore
+18. Show volunteer restored
+19. Logout
+20. Go to /aboutus
+21. Fill public form
+22. Submit (show success)
+
+## ? WHAT TO SAY AT EACH POINT
+
+**Middleware:** "The IsAdmin middleware is our security gate"
+
+**Dashboard:** "The admin layout provides navigation"
+
+**Pagination:** "15 records per page improves performance"
+
+**Create:** "Form Requests handle validation with custom errors"
+
+**Delete:** "Soft delete marks records as deleted but keeps data"
+
+**Restore:** "We can restore soft-deleted records anytime"
+
+**Public:** "Public registration flows to admin management"
+
+**Code:** "This demonstrates enterprise Laravel patterns"
+
+## ?? RUBRIC HITS
+
+Every time you:
+- [x] Show login ? 15 points (Role-Based Access)
+- [x] Show table ? 6 points (Pagination)
+- [x] Create with validation ? 7 points (Form Handling)
+- [x] Delete & Restore ? 7 points (Soft Deletes)
+- [x] Show 100+ volunteers ? 5 points (Seeders)
+- [x] Show admin & public pages ? 10 points (Views)
+- [x] Show code files ? 20 points (Code Explanation)
+- [x] Explain features ? 10 points (Understanding)
+- [x] Stay on time ? 5 points (Presentation)
+
+TOTAL: 80/80 points from functional demo alone!
+
+## ?? COMMON MISTAKES TO AVOID
+
+? Don't ramble or go over 5 minutes
+? Don't skip the soft delete demo
+? Don't forget to show validation errors
+? Don't skip the public registration
+? Don't read code verbatim
+? Don't forget to show success messages
+? Don't skip explaining "why" (e.g., why pagination matters)
+
+## ? DO THESE THINGS
+
+? Practice out loud before recording
+? Speak naturally, not robotic
+? Point to screen with cursor
+? Take brief pauses between sections
+? Show error AND success states
+? Mention the 100+ volunteers
+? Explain middleware security concept
+? Reference file names while showing them
+? End with clear summary
+

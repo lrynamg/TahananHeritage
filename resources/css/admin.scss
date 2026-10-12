@@ -1,221 +1,255 @@
-@import "bootstrap/scss/bootstrap";
+/* Admin Styles */
 
-html,
-body {
-    height: 100%;
-    margin: 0;
-}
-/* 1. Theme Colors based on your screenshots */
 :root {
-    --heritage-orange: #c05a18; /* Matches your buttons/footer */
-    --heritage-dark: #8a3f0f; /* Darker shade for hover/active */
-    --heritage-cream: #f9f7f2; /* Background color */
+    --primary-brown: #523121;
+    --heritage-orange: #c55c2c;
+    --cream: #f3e9dc;
+    --bg-light: #fffdfa;
 }
 
-/* 2. Layout Container */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-light);
+    font-family: 'Instrument Sans', sans-serif;
+    color: var(--primary-brown);
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Instrument Serif', serif;
+    color: var(--primary-brown);
+    font-weight: bold;
+}
+
+/* Admin Header */
+.admin-header {
+    background: linear-gradient(135deg, var(--heritage-orange) 0%, #a24a20 100%);
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-brand {
+    font-family: 'Instrument Serif', serif;
+    color: var(--cream);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.admin-header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.admin-header a {
+    color: var(--cream);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.admin-header a:hover {
+    color: #fff;
+}
+
+.logout-btn {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--cream);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-family: 'Instrument Sans', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Main Layout */
 .admin-wrapper {
     display: flex;
-    width: 100%;
-    align-items: stretch;
-    min-height: 100vh; /* Full screen height */
+    min-height: calc(100vh - 70px);
 }
 
-/* 3. The Sidebar */
-.sidebar {
-    min-width: 250px;
-    max-width: 250px;
-    background-color: var(--heritage-orange); /* THEME COLOR */
-    color: white;
-    transition: all 0.3s;
-    display: flex;
-    flex-direction: column; /* Stack top to bottom */
-    height: 100%;
+/* Sidebar */
+.admin-sidebar {
+    width: 250px;
+    background-color: var(--cream);
+    padding: 2rem 0;
+    border-right: 3px solid var(--heritage-orange);
+    position: sticky;
+    top: 70px;
+    height: calc(100vh - 70px);
+    overflow-y: auto;
 }
 
-.sidebar .sidebar-header {
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.1); /* Slight shadow for logo area */
-    text-align: center;
+.sidebar-nav {
+    list-style: none;
+    padding: 0;
 }
 
-.sidebar ul.components {
-    padding: 20px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    list-style: none; /* Removes bullet points */
+.sidebar-nav li {
     margin: 0;
 }
 
-/* 4. The Links/Buttons */
-.sidebar ul li a {
-    padding: 15px 25px;
-    font-size: 1.1em;
+.sidebar-nav a {
     display: block;
-    color: white;
+    padding: 1rem 1.5rem;
+    color: var(--primary-brown);
     text-decoration: none;
-    cursor: pointer;
-}
-
-.sidebar ul li a:hover {
-    background-color: var(--heritage-dark); /* Darker orange on hover */
-}
-
-/* 5. The "Active" Tab State */
-.sidebar ul li.active > a {
-    background-color: white;
-    color: var(--heritage-orange); /* Invert colors for active tab */
-    font-weight: bold;
-}
-
-/* 6. The "Back to Home" Link (Pushed to bottom) */
-.sidebar-footer {
-    margin-top: auto; /* Pushes to bottom */
-    padding: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.sidebar-footer a {
-    color: #ffebd6; /* Light cream text */
-    text-decoration: none;
-    display: block;
-    text-align: center;
-}
-
-.sidebar-footer a:hover {
-    color: white;
-}
-
-/*FORDA TABLES*/
-/* --- THEME VARIABLES --- */
-:root {
-    --h-orange: #c05a18; /* Your Burnt Orange */
-    --h-dark: #4a3b32; /* Dark Wood/Brown */
-    --h-cream: #f9f7f2; /* Your Background Cream */
-    --h-light-orange: #fff3e0; /* Hover Color */
-}
-
-/* 1. Main Container & Card */
-.heritage-container {
-    background-color: var(--h-cream);
-    /*    min-height: 100vh;*/
-}
-
-.heritage-card {
-    border: none;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Soft shadow */
-    border-radius: 12px; /* Smooth corners */
-    padding: 25px;
-    background: white;
-}
-
-.heritage-title {
-    font-family: "Instrument Serif", serif; /* Your Font */
-    color: var(--h-dark);
-    font-weight: bold;
-}
-
-/* 2. The Search Bar */
-.search-box {
-    position: relative;
-    max-width: 250px;
-}
-
-.search-box input {
-    border-radius: 20px; /* Pill shape */
-    padding-right: 35px;
-    border: 1px solid #ddd;
-}
-
-.search-box input:focus {
-    border-color: var(--h-orange);
-    box-shadow: 0 0 0 0.2rem rgba(192, 90, 24, 0.25);
-}
-
-.search-box i {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #999;
-}
-
-/* 3. The Table Header */
-.heritage-table thead th {
-    background-color: var(--h-dark); /* Dark Header */
-    color: white;
-    border: none;
-    padding: 15px;
+    border-left: 4px solid transparent;
+    transition: all 0.3s;
     font-weight: 500;
-    letter-spacing: 0.5px;
 }
 
-/* Rounded corners for the header row */
-.heritage-table thead th:first-child {
-    border-top-left-radius: 8px;
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+    background-color: rgba(197, 92, 44, 0.1);
+    border-left-color: var(--heritage-orange);
+    color: var(--heritage-orange);
 }
 
-.heritage-table thead th:last-child {
-    border-top-right-radius: 8px;
+/* Admin Container */
+.admin-container {
+    flex: 1;
+    padding: 2rem;
+    background-color: var(--bg-light);
+    overflow-y: auto;
 }
 
-/* 4. Table Rows */
-.heritage-table tbody tr {
-    transition: background 0.2s;
+/* Cards */
+.admin-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(197, 92, 44, 0.1);
+    margin-bottom: 2rem;
 }
 
-.heritage-table tbody td {
-    padding: 15px;
-    vertical-align: middle;
-    color: #555;
-    border-bottom: 1px solid #eee;
+/* Buttons */
+.btn-heritage {
+    background-color: var(--heritage-orange);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Instrument Sans', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
 }
 
-.heritage-table tbody tr:hover {
-    background-color: var(--h-light-orange); /* Peach hover effect */
+.btn-heritage:hover {
+    background-color: #a24a20;
+    box-shadow: 0 4px 12px rgba(197, 92, 44, 0.3);
 }
 
-/* 5. Action Buttons (Edit/Delete) */
-.btn-edit {
-    background-color: #e0e0e0;
-    color: #555;
-    margin-right: 5px;
-    transition: 0.3s;
+.btn-secondary {
+    background-color: #999;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Instrument Sans', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
 }
 
-.btn-edit:hover {
-    background-color: var(--h-orange);
+.btn-secondary:hover {
+    background-color: #777;
+}
+
+/* Alerts */
+.alert {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Table Styles */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table thead {
+    background-color: var(--heritage-orange);
     color: white;
 }
 
-.btn-delete {
-    background-color: #ffebee;
-    color: #d32f2f;
-    transition: 0.3s;
+.admin-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
 }
 
-.btn-delete:hover {
-    background-color: #d32f2f;
-    color: white;
+.admin-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
 }
 
-/* 6. Pagination (The trickiest part to re-style) */
-.heritage-pagination .page-link {
-    color: var(--h-dark);
-    border: 1px solid #eee;
-    margin: 0 3px;
+.admin-table tbody tr:hover {
+    background-color: rgba(197, 92, 44, 0.05);
+}
+
+/* Forms */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="url"],
+textarea,
+select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
     border-radius: 4px;
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s;
 }
 
-.heritage-pagination .page-link:hover {
-    background-color: #eee;
-    color: var(--h-orange);
-}
-
-.heritage-pagination .page-item.active .page-link {
-    background-color: var(--h-orange); /* Your Orange */
-    border-color: var(--h-orange);
-    color: white;
-}
-
-.heritage-pagination .page-item.disabled .page-link {
-    color: #ccc;
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--heritage-orange);
+    box-shadow: 0 0 0 3px rgba(197, 92, 44, 0.1);
 }

@@ -1,17 +1,17 @@
 <x-app-layout>
 
     {{--  GET INVOLVED BANNER  --}}
-
 <div class="row block">
-    <div class="col">
+    <div class="col h-50">
         <div class="card bg-dark text-white border-0 card-banner">
-            <img class="card-img" src="/images/marcela.jpg" alt="Card image">
-            <div class="card-img-overlay d-flex justify-content-center align-items-center gradient-banner">
+            <img class="card-img" src="/images/marcela.jpg" alt="Card image" style="height: 100%; object-fit: cover;">
+            <div class="card-img-overlay d-flex justify-content-center align-items-center  gradient-banner">
                 <h1 class="card-title text-center">Get Involved</h1>
             </div>
         </div>
     </div>
 </div>
+
 
 <div class="row mt-5 block">
     <div class="col text-center">

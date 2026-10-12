@@ -17,7 +17,7 @@
           </li> --}}
 
           <li>
-              <a href="/admin/users">
+              <a href="/admin/founders">
                   <i class="fas fa-user-tie mr-2"></i> Founders
               </a>
           </li>

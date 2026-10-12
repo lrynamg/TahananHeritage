@@ -1,0 +1,162 @@
++----------------------------------------------------------------------------+
+¦          TAHANANHERITAGE - 5 MINUTE VOLUNTEER PRESENTATION TIMELINE         ¦
++----------------------------------------------------------------------------+
+
+[0:00] +-------------------------------------------------------------------+
+       ¦ INTRODUCTION (30 seconds)                                          ¦
+       ¦ Say: "I'm demonstrating TahananHeritage Admin Panel focusing on... ¦
+       ¦ Show: Application logo / homepage                                 ¦
+       +-------------------------------------------------------------------+
+
+[0:30] +-------------------------------------------------------------------+
+       ¦ LOGIN & ROLE-BASED ACCESS (15 seconds) - [15 RUBRIC POINTS]       ¦
+       ¦ Say: "Role-based access control with middleware..."               ¦
+       ¦ Do: Show login ? Try /admin/volunteers (403 error) ? Login        ¦
+       ¦ File: app/Http/Middleware/IsAdmin.php                             ¦
+       ¦ Code Point: auth()->check() && auth()->user()->isAdmin()           ¦
+       +-------------------------------------------------------------------+
+
+[0:45] +-------------------------------------------------------------------+
+       ¦ ADMIN DASHBOARD & NAVIGATION (30 seconds) - [10 RUBRIC POINTS]    ¦
+       ¦ Say: "Professional admin interface with sidebar navigation"        ¦
+       ¦ Do: Show dashboard ? Highlight Volunteers link ? Click to index   ¦
+       ¦ File: resources/views/components/AdminLayout.blade.php            ¦
+       +-------------------------------------------------------------------+
+
+[1:15] +-------------------------------------------------------------------+
+       ¦ VOLUNTEERS TABLE & PAGINATION (30 seconds) - [6 RUBRIC POINTS]    ¦
+       ¦ Say: "Pagination shows 15 records per page for performance"        ¦
+       ¦ Do: Show table ? Click Next ? Page 2 ? Show bootstrap pagination  ¦
+       ¦ File: app/Http/Controllers/Admin/VolunteerController.php (L18)     ¦
+       ¦ Code: $volunteers = Volunteer::paginate(15);                      ¦
+       ¦ File: resources/views/admin/volunteers/index.blade.php            ¦
+       ¦ Code: {{ $volunteers->links() }}                                  ¦
+       +-------------------------------------------------------------------+
+
+[1:45] +-------------------------------------------------------------------+
+       ¦ CREATE VOLUNTEER WITH VALIDATION (30 seconds) - [7 RUBRIC PTS]     ¦
+       ¦ Say: "Form Requests validate all data server-side with custom..." ¦
+       ¦ Do: Click Add ? Show form ? Leave email blank ? Show error       ¦
+       ¦     Fill form ? Submit ? Show success message & new row in table  ¦
+       ¦ File: resources/views/admin/volunteers/create.blade.php          ¦
+       ¦ File: app/Http/Requests/StoreVolunteerRequest.php                 ¦
+       ¦ Rules: required, email, unique, regex for phone                  ¦
+       ¦ File: app/Http/Controllers/Admin/VolunteerController.php (store) ¦
+       +-------------------------------------------------------------------+
+
+[2:15] +-------------------------------------------------------------------+
+       ¦ UPDATE & SOFT DELETE (30 seconds) - [7 RUBRIC POINTS]            ¦
+       ¦ Say: "Soft delete marks records deleted but keeps the data"      ¦
+       ¦ Do: Edit volunteer ? Change phone ? Submit ? Show success       ¦
+       ¦     Delete volunteer ? Show success ? Click Deleted Volunteers  ¦
+       ¦ File: app/Models/Volunteer.php                                  ¦
+       ¦ Trait: use SoftDeletes;                                         ¦
+       ¦ File: resources/views/admin/volunteers/deleted.blade.php        ¦
+       +-------------------------------------------------------------------+
+
+[2:45] +-------------------------------------------------------------------+
+       ¦ RESTORE SOFT-DELETED VOLUNTEER (30 seconds)                      ¦
+       ¦ Say: "The key advantage of soft deletes - we can restore anytime" ¦
+       ¦ Do: Click Restore ? Success message ? Back to main table         ¦
+       ¦     Verify volunteer is restored                                 ¦
+       ¦ File: app/Http/Controllers/Admin/VolunteerController.php         ¦
+       ¦ Method: restore() - $volunteer->restore()                        ¦
+       +-------------------------------------------------------------------+
+
+[3:15] +-------------------------------------------------------------------+
+       ¦ PUBLIC VOLUNTEER REGISTRATION (30 seconds) - [10 RUBRIC PTS]       ¦
+       ¦ Say: "Full lifecycle: Public registration + Admin management"    ¦
+       ¦ Do: Logout/new window ? Go to /aboutus ? Fill form ? Submit     ¦
+       ¦     Success message ? Optional: Login, verify in admin          ¦
+       ¦ File: routes/web.php (L23-34)                                   ¦
+       ¦ Route: Route::post('/aboutus', function...) - no middleware      ¦
+       ¦ File: resources/views/aboutus.blade.php                         ¦
+       +-------------------------------------------------------------------+
+
+[3:45] +-------------------------------------------------------------------+
+       ¦ CODE WALKTHROUGH (60 seconds) - [20 RUBRIC POINTS]               ¦
+       ¦                                                                   ¦
+       ¦ +- SEGMENT 1: MIDDLEWARE (20 seconds)                            ¦
+       ¦ ¦ File: app/Http/Middleware/IsAdmin.php                          ¦
+       ¦ ¦ Say: "Security gate checks: (1) authenticated? (2) admin role?" ¦
+       ¦ ¦ Show: if (!auth()->check() || !auth()->user()->isAdmin())      ¦
+       ¦ ¦       abort(403, 'Unauthorized');                              ¦
+       ¦ ¦                                                                 ¦
+       ¦ +- SEGMENT 2: CONTROLLER (20 seconds)                            ¦
+       ¦ ¦ File: app/Http/Controllers/Admin/VolunteerController.php       ¦
+       ¦ ¦ Say: "RESTful pattern: index, create, store, edit, update..."  ¦
+       ¦ ¦ Explain: 9 methods covering full lifecycle                     ¦
+       ¦ ¦                                                                 ¦
+       ¦ +- SEGMENT 3: FORM VALIDATION (10 seconds)                       ¦
+       ¦ ¦ File: app/Http/Requests/StoreVolunteerRequest.php              ¦
+       ¦ ¦ Say: "Centralized validation, unique check, regex for phone"   ¦
+       ¦ ¦                                                                 ¦
+       ¦ +- SEGMENT 4: MODEL (10 seconds)                                 ¦
+       ¦   File: app/Models/Volunteer.php                                 ¦
+       ¦   Say: "SoftDeletes trait, fillable fields, timestamps"          ¦
+       +-------------------------------------------------------------------+
+
+[4:45] +-------------------------------------------------------------------+
+       ¦ CONCLUSION (15 seconds)                                          ¦
+       ¦ Say: Summary of all rubric points met                            ¦
+       ¦     "This is production-ready enterprise Laravel"                ¦
+       ¦ Show: Confidence and clear ending                                ¦
+       +-------------------------------------------------------------------+
+
+[5:00] ? END OF PRESENTATION
+
+
+---------------------------------------------------------------------------
+
+RUBRIC SCORE MAPPING
+---------------------------------------------------------------------------
+
++-----------------------------------------------------+
+¦ Rubric Category                            ¦ Points ¦
++--------------------------------------------+--------¦
+¦ [0:30-0:45] Role-Based Middleware & Access¦   15   ¦
+¦ [0:45-3:15] Required Admin/User Views     ¦   10   ¦
+¦ [1:45-2:15] Form Validation & Notifications¦   7   ¦
+¦ [1:15-1:45] Pagination & Relationship     ¦   6   ¦
+¦ [2:15-3:15] Soft Delete, Restore, Delete  ¦   7   ¦
+¦ [1:15-1:45] Seeder - 100 Records          ¦   5   ¦
++--------------------------------------------+--------¦
+¦ Subtotal: Code & Functionality            ¦   50   ¦
++--------------------------------------------+--------¦
+¦ [0:00-5:00] Functionality Demonstration    ¦   15   ¦
+¦ [3:45-4:45] Code Explanation              ¦   20   ¦
+¦ [Throughout] Understanding Implementation  ¦   10   ¦
+¦ [Throughout] Presentation Quality & Timing¦   5   ¦
++--------------------------------------------+--------¦
+¦ Subtotal: Explanation & Presentation      ¦   50   ¦
++--------------------------------------------+--------¦
+¦ TOTAL SCORE                                ¦  100   ¦
++-----------------------------------------------------+
+
+
+---------------------------------------------------------------------------
+
+QUICK DOS & DONTS
+---------------------------------------------------------------------------
+
+? DO:
+   • Practice timing before recording
+   • Speak clearly and naturally
+   • Point to code with cursor
+   • Show both errors AND success
+   • Pause between sections
+   • Use 100+ volunteers statistic
+   • Reference file names
+   • End with confidence
+
+? DON'T:
+   • Go over 5 minutes
+   • Skip soft delete demo
+   • Miss form validation
+   • Forget public registration
+   • Read code verbatim
+   • Omit explaining "why"
+   • Rush through sections
+   • End abruptly
+
+---------------------------------------------------------------------------

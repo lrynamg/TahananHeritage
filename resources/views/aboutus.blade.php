@@ -1,16 +1,15 @@
 <x-app-layout>
 
 <div class="row block">
-    <div class="col">
+    <div class="col h-50">
         <div class="card bg-dark text-white border-0 card-banner">
-            <img class="card-img" src="/images/clarin.jpg" alt="Card image">
-            <div class="card-img-overlay d-flex justify-content-center align-items-center gradient-banner">
+            <img class="card-img" src="/images/marcela.jpg" alt="Card image" style="height: 100%; object-fit: cover;">
+            <div class="card-img-overlay d-flex justify-content-center align-items-center  gradient-banner">
                 <h1 class="card-title text-center">About Us</h1>
             </div>
         </div>
     </div>
 </div>
-
 
 {{--  DESCRIPTION  --}}
 <div class="row p-5 m-5 block">
@@ -85,25 +84,22 @@
             &lt;
         </button>
 
-        <div id="cardSlider3" class="d-flex flex-nowrap gap-4 px-5 card-scroll">
+       <div id="cardSlider3" class="d-flex flex-nowrap gap-4 px-5 card-scroll">
+    {{-- @foreach ($founders as $founder)
+        <div class="card volunteer_card flex-shrink-0" style="width: 300px;">
+            <img src="{{ $founder->image}}"
+                 class="card-img-top img_volunteer rounded-5"
+                 alt="{{ $founder->founder_name }}"
+                 style="height: 300px; object-fit: cover;">
 
-            <div class="col">
-                @foreach ($founders as $founder )
-                 <div class="card volunteer_card flex-shrink-0" style="width: 300px;">
-                    <img src={{ $founder['image'] }}
-                         class="card-img-top img_volunteer rounded-5"
-                         alt={{$founder["founder_name"]}}
-                         style="height: 300px; object-fit: cover;">
-
-                    <div class="card-body text-center">
-                        <p class="card-title fw-bold">{{$founder["founder_name"]}}</p>
-                        <p class="card-text">{{$founder["position"]}}</p>
-                    </div>
-                </div>
-                @endforeach
-               
+            <div class="card-body text-center">
+                <p class="card-title fw-bold">{{ $founder->founder_name }}</p>
+                <p class="card-text">{{ $founder->position }}</p>
             </div>
         </div>
+    @endforeach --}}
+</div>
+
 
         <div class="pagination-controls d-flex justify-content-center gap-2 mt-1 dot-group-1">
             <button class="page-dot active"  style="width:12px; height:12px;"></button>
@@ -123,61 +119,56 @@
         <img src="/images/volunteer_form.jpg" alt="volunteer" class="img-fluid w-100" style="height:500px;"/>
     </div>
     <div class="col">
-        <form method="post" class="border p-4 rounded-5 involve_desc" name="volunteerForm" >
+        <form action='{{ url('/aboutus') }}' method="POST" class="border p-4 rounded-5 involve_desc" name="volunteerForm">
             @csrf
-            {{--  // Registration Form  --}}
+            {{-- Registration Form --}}
             <div class="row">
                 <div class="col">
-                    <h1 class="text-center m-2 text-shadow"  style="color: #C75D2C;">Join Us in Preserving Heritage</h1>
+                    <h1 class="text-center m-2 text-shadow" style="color: #C75D2C;">Join Us in Preserving Heritage</h1>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col">
                     <label class="form-label" style="color: #C75D2C;">First Name <span class="text-danger">*</span></label>
-                    <input class="form-control rounded-pill" type="text" name="fname" value="" required/>
-                    <div class="text-danger">
-                        Input a valid first name.
-                    </div>
-
+                    <input class="form-control rounded-pill @error('first_name') is-invalid @enderror" type="text" name="first_name" value="{{ old('first_name') }}" />
+                    @error('first_name')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
+
                 <div class="col">
                     <label class="form-label" style="color: #C75D2C;">Last Name <span class="text-danger">*</span></label>
-                    <input class="form-control rounded-pill" type="text" name="lname" value="" required/>
-                    <div class="text-danger">
-                        Input a valid last name.
-                    </div>
+                    <input class="form-control rounded-pill @error('last_name') is-invalid @enderror" type="text" name="last_name" value="{{ old('last_name') }}" />
+                    @error('last_name')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
-
-
-            {{--  //email add  --}}
 
             <div class="row mt-3">
                 <div class="col">
                     <label class="form-label" style="color: #C75D2C;">Email <span class="text-danger">*</span></label>
-                    <input class="form-control rounded-pill" type="email" name="email" value="" required placeholder="youremail@gmail.com"/>
-                    <div class="text-danger">
-                        Input a valid email.
-                    </div>
+                    <input class="form-control rounded-pill @error('email') is-invalid @enderror" type="email" name="email" value="{{ old('email') }}" placeholder="youremail@gmail.com" />
+                    @error('email')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
-
-            {{--  //phone number  --}}
 
             <div class="row mt-3">
                 <div class="col">
                     <label class="form-label" style="color: #C75D2C;">Phone Number <span class="text-danger">*</span></label>
-                    <input class="form-control rounded-pill" type="text" name="pwd" value="" " required pattern="\d{11}" placeholder="09xxxxxxxxx"/>
-                    <div class="text-danger">
-                        Input a valid phone number. 
-                    </div>
+                    <input class="form-control rounded-pill @error('phone_number') is-invalid @enderror" type="tel" name="phone_number" value="{{ old('phone_number') }}" placeholder="09xxxxxxxxx" />
+                    @error('phone_number')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
 
             <div class="mx-auto d-flex justify-content-center">
-                <button type="button" class="btn orange_btn mt-3 rounded-pill text-center w-50">Volunteer</button>
+                <button type="submit" class="btn orange_btn mt-3 rounded-pill text-center w-50">Volunteer</button>
             </div>
-
         </form>
     </div>
 </div>
